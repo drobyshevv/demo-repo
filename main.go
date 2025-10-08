@@ -1,4 +1,4 @@
-package demorepo
+package main
 
 import "fmt"
 
