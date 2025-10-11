@@ -1,11 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
-	fmt.Println("start")
-	fmt.Println("any")
-	fmt.Println("test")
-	a := 10000
-	fmt.Println(a)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Привет, мир!")
+	})
+
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("Ошибка запуска сервера:", err)
+	}
 }
